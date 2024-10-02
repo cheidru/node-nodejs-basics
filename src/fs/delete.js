@@ -2,7 +2,7 @@ const fs = require('fs');
 
 const remove = async () => {
     try {
-        const fileToDlelete = 'fileToRemove.txt';
+        const fileToDlelete = 'files/fileToRemove.txt';
         // Write your code here
         // check if Files folder exists
         fs.access(fileToDlelete, (error) => {

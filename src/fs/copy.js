@@ -2,8 +2,8 @@ const fs = require('fs');
 
 const copy = async () => {
     // Write your code here
-    const filesFolder = 'files';
-    const copyFolder = 'files_copy';
+    const filesFolder = 'files/files';
+    const copyFolder = 'files/files_copy';
     // const copyFolderPath = '\files_copy\\';
 
     try {
