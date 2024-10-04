@@ -10,7 +10,7 @@ const transform = async () => {
           }
     })
 
-    process.stdin.pipe(reverseStr)
+    process.stdin.pipe(reverseStr).pipe.process.stdout;
 };
 
 await transform();
