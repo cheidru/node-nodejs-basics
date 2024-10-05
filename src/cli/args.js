@@ -1,3 +1,5 @@
+import process from 'process';
+
 const parseArgs = () => {
     // Write your code here
     let arr = process.argv.slice(2).map(item => item.replace('--',''));
