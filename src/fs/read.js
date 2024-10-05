@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const read = async () => {
     // Write your code here
@@ -6,7 +6,7 @@ const read = async () => {
         if (error) {
             throw new Error ("FS operation failed");
         } else {
-            fs.readFile('files/fileToRead.txt', (err, data) => {
+            fs.readFile('files/fileToRead.txt', 'utf8', (err, data) => {
                 if(err) throw err;
                 console.log(data);
             })
