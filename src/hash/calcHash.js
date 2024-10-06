@@ -10,7 +10,6 @@ const calculateHash = async () => {
         if(err) throw err;
         sha256Hash.update(data);
         process.stdout.write(sha256Hash.digest('hex'))
-        // console.log(sha256Hash.digest('hex'));
     })
 };
 
