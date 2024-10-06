@@ -1,10 +1,11 @@
-const fs = require('fs');
-const process = require('process');
+import fs from 'fs';
+import process from 'process';
 
 const write = async () => {
     // Write your code here
     const stream = fs.createWriteStream('files/fileToWrite.txt');
-    stream.pipe(process.stdin);
+    stream.on('err', () => {console.log(err)});
+    process.stdin.pipe(stream);
 };
 
 await write();
