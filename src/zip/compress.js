@@ -1,24 +1,11 @@
-const zlib = require('zlib');
-const { pipeline } = require('stream');
-const fs = require('fs');
-
-const { promisify } = require('util');
-const pipe = promisify(pipeline);
+import zlib from 'zlib';
+import fs from 'fs';
 
 const compress = async () => {
     // Write your code here
-    async function do_gzip(input, output) {
-        const gzip = zlib.createGzip();
-        const origFile = fs.createReadStream(input);
-        const resFile = fs.createWriteStream(output);
-        await pipe(origFile, gzip, resFile);
-    }
-
-    do_gzip('files/fileToCompress.txt', 'files/archive.gz')
-    .catch((err) => {
-      console.error('An error occurred:', err);
-      process.exitCode = 1;
-    });    
+        const origFile = fs.createReadStream('files/fileToCompress.txt');
+        const resFile = fs.createWriteStream('files/archive.gz');
+        origFile.pipe(zlib.createGzip()).pipe(resFile);
 };
 
 await compress();
