@@ -1,7 +1,8 @@
 import fs from 'fs';
+import path from 'path';
 
 const remove = async () => {
-    const fileToDelete = 'files/fileToRemove.txt';
+    const fileToDelete = path.resolve('src/fs/files', 'fileToRemove.txt');
     // Write your code here
     fs.access(fileToDelete, (error) => {
         if (error) {

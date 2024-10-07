@@ -1,13 +1,15 @@
 import fs from 'fs';
+import path from 'path';
 
 const create = async () => {
     // Write your code here
     // check if Files folder and fresh.txt exist
-    fs.access('files/fresh.txt', (error) => {
+    const filePath = path.resolve('src/fs/files', 'fresh.txt');
+    fs.access(filePath, (error) => {
         if (!error) {
             throw new Error("FS operation failed");
         } else {
-            fs.writeFile('files/fresh.txt', 'I am fresh and young', (error) => {
+            fs.writeFile(filePath, 'I am fresh and young', (error) => {
                 if (error) console.log(error)})
         }
     })

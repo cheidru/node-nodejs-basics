@@ -1,15 +1,18 @@
 import fs from 'fs';
+import path from 'path';
 
 const rename = async () => {
-    // Write your code here    
-    fs.access('files/wrongFilename.txt', (error) => {
+    // Write your code here
+    const wrongFilePath = path.resolve('src/fs/files', 'wrongFilename.txt');
+    const properFilePath = path.resolve('src/fs/files', 'properFilename.md'); 
+    fs.access(wrongFilePath, (error) => {
         if (error) {
             // file wrongFilename.txt doesn't exists
             throw new Error ("FS operation failed");
         } else {
-            fs.access('files/properFilename.md', (error) => {
+            fs.access(properFilePath, (error) => {
                 if (error) {
-                    fs.rename('files/wrongFilename.txt','files/properFilename.md', (error) => {
+                    fs.rename(wrongFilePath, properFilePath, (error) => {
                         if (error) console.log(error)});
                 } else {
                     throw new Error ("FS operation failed");                

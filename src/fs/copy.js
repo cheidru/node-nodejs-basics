@@ -1,12 +1,13 @@
 import fs from 'fs';
+import path from 'path';
 
 const copy = async () => {
     // Write your code here
-    const filesFolder = 'files';
-    const copyFolder = 'files_copy';
+    const filesFolder = path.resolve('src/fs/files');
+    const copyFolder = path.resolve('src/fs/files_copy');
         // check if 'files' folder exists
         fs.access(filesFolder, (error) => {
-            if (error) { // ENOENT = 'No such file or directory'
+            if (error) {
                 console.log('filesFolder exists');
                 throw new Error ("FS operation failed");
             } else {

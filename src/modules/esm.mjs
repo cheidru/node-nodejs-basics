@@ -1,15 +1,16 @@
 // const path = require('path');
-import path from 'path.js';
+import path from 'path';
+import { fileURLToPath } from 'url';
 // const { release, version } = require('os');
 // const { createServer: createServerHttp } = require('http');
-import { release, version } from 'os.js';
-import { createServer as createServerHttp } from 'http.js';
+import { release, version } from 'os';
+import { createServer as createServerHttp } from 'http';
 // require('./files/c');
 import './files/c.js'
 
 // added imports
-import * as objA from './files/a.json';
-import * as objB from './files/b.json';
+import * as objA from './files/a.json' with {type: 'json'};
+import * as objB from './files/b.json' with {type: 'json'};
 
 
 const random = Math.random();
@@ -33,6 +34,11 @@ if (random > 0.5) {
 console.log(`Release ${release()}`);
 console.log(`Version ${version()}`);
 console.log(`Path segment separator is "${path.sep}"`);
+
+// __filename & __dirname are not supported in ES modules.
+// here is the workaround
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 console.log(`Path to current file is ${__filename}`);
 console.log(`Path to current directory is ${__dirname}`);
