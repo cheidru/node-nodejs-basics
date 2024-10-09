@@ -1,20 +1,18 @@
-const fs = require('fs');
+import fs from 'fs';
+import path from 'path';
 
 const create = async () => {
     // Write your code here
-    let meFresh = 'I am fresh and young';
-    try {
-        // check if Files folder and fresh.txt exist
-        fs.open('files/fresh.txt', r, (error) => {
-            if (error.code === 'ENOENT') { // ENOENT = 'No such file or directory'
-                fs.writeFile('/files/fresh.txt', meFresh, (error) => {console.log(error)})
-            } else {
-                throw new Error("FS operation failed");
-            }
-        })
-    } catch (err) {
-        console.log(err);
-    }
+    // check if Files folder and fresh.txt exist
+    const filePath = path.resolve('src/fs/files', 'fresh.txt');
+    fs.access(filePath, (error) => {
+        if (!error) {
+            throw new Error("FS operation failed");
+        } else {
+            fs.writeFile(filePath, 'I am fresh and young', (error) => {
+                if (error) console.log(error)})
+        }
+    })
 };
 
 await create();

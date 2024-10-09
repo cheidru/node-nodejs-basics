@@ -1,9 +1,12 @@
-const fs = require('fs');
-const process = require('process');
+import fs from 'fs';
+import process from 'process';
+import path from 'path';
 
 const read = async () => {
     // Write your code here
-    const stream = fs.createReadStream('files/fileToRead.txt');
+    const filePath = path.resolve('src/streams/files', 'fileToRead.txt');
+    const stream = fs.createReadStream('./files/fileToRead.txt');
+    stream.on('err', () => {console.log(err)});
     stream.pipe(process.stdout);
 };
 
